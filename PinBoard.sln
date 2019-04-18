@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PinBoard.Api", "src\PinBoard.Api\PinBoard.Api.csproj", "{ACB96F47-7EEF-47F9-BEF7-62787507D760}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6B19CEFB-B7D9-467A-9B81-1B948AB0CF95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinBoard.Unit.Tests", "tests\PinBoard.Unit.Tests\PinBoard.Unit.Tests.csproj", "{9A53CC6D-B8DE-46E1-878F-40CFA28EF813}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{ACB96F47-7EEF-47F9-BEF7-62787507D760}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ACB96F47-7EEF-47F9-BEF7-62787507D760}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ACB96F47-7EEF-47F9-BEF7-62787507D760}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A53CC6D-B8DE-46E1-878F-40CFA28EF813}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A53CC6D-B8DE-46E1-878F-40CFA28EF813}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A53CC6D-B8DE-46E1-878F-40CFA28EF813}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A53CC6D-B8DE-46E1-878F-40CFA28EF813}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9A53CC6D-B8DE-46E1-878F-40CFA28EF813} = {6B19CEFB-B7D9-467A-9B81-1B948AB0CF95}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {102AF257-9355-4604-9C50-1FE22F6F624E}
