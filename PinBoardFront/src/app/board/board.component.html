@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-sm column" (cdkDropListDropped)="drop($event)" cdkDropList>
+
+      <div class="card bg-light mb-3" *ngFor="let story of stories" cdkDrag>
+        <div class="card-header">{{story.title}}</div>
+        <div class="card-body">
+          <h5 class="card-title">Light card title</h5>
+          <p class="card-text">{{story.content}}</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-sm column">
+
+    </div>
+
+    <div class="col-sm">
+
+    </div>
+
+    <div class="col-sm">
+
+    </div>
+
+  </div>
+</div>
