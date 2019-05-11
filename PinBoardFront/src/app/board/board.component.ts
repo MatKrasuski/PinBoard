@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IStory } from './story';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-board',
@@ -9,7 +9,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 })
 export class BoardComponent implements OnInit {
 
-  stories: IStory[] = [
+  todo: IStory[] = [
     {
       "title": "Header",
       "content": "Some quick example text to build on the card title and make up the bulk of the card's content."
@@ -24,13 +24,29 @@ export class BoardComponent implements OnInit {
     }
   ]
 
+  done: IStory[] = [
+    {
+      "title": "Header Four",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    }
+  ]
+
   constructor() { }
 
   ngOnInit() {
   }
 
   drop(event: CdkDragDrop<IStory[]>) {
-    moveItemInArray(this.stories, event.previousIndex, event.currentIndex);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
   }
 
 }
