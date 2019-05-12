@@ -2,7 +2,7 @@
   <div class="row">
 
     <div class="col-sm column" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList]"(cdkDropListDropped)="drop($event)">
-
+      <h4>To Do</h4>
       <div class="card bg-light mb-3" *ngFor="let item of todo" cdkDrag>
         <div class="card-header">{{item.title}}</div>
         <div class="card-body">
@@ -11,9 +11,15 @@
         </div>
       </div>
 
+      <mat-card>
+          <mat-card-title>Some title</mat-card-title>
+          <mat-card-content>some content</mat-card-content>
+      </mat-card>
+
     </div>
 
     <div class="col-sm column" cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]" (cdkDropListDropped)="drop($event)">
+        <h4>In Progress</h4>
       <div class="card bg-light mb-3" *ngFor="let item of done" cdkDrag>
         <div class="card-header">{{item.title}}</div>
         <div class="card-body">
