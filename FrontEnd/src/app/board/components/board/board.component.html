@@ -1,34 +1,40 @@
 <mat-toolbar color='primary'>
   Pin Board
   <button mat-button [matMenuTriggerFor]="menu">Menu</button>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item>Item 1</button>
-  <button mat-menu-item>Item 2</button>
-</mat-menu>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
 </mat-toolbar>
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm">
-      <mat-card>
+    <div class="col-sm" cdkDropList #toDo="cdkDropList" [cdkDropListData]="stories" [cdkDropListConnectedTo]="[inProgress]" (cdkDropListDropped)="drop($event)">
+      <div *ngIf="st === 'to-do'">
+        <mat-card *ngFor="let item of stories" cdkDrag>
+          <mat-card-title>{{item.title}}</mat-card-title>
+          <mat-card-subtitle>{{item.subtitle}}</mat-card-subtitle>
+          <mat-card-content>{{item.content}}</mat-card-content>
+        </mat-card>
+      </div>
+
+    </div>
+    <div class="col-sm" cdkDropList #inProgress="cdkDropList" [cdkDropListData]="stories" [cdkDropListConnectedTo]="[toDo]" (cdkDropListDropped)="drop($event)">
+      <mat-card cdkDrag>
         <mat-card-title>Some title</mat-card-title>
         <mat-card-subtitle>
-        <mat-chip-list>
-          <mat-chip>epic name</mat-chip>
-        </mat-chip-list>
+          <mat-chip-list>
+            <mat-chip>epic name</mat-chip>
+          </mat-chip-list>
         </mat-card-subtitle>
         <mat-card-content>Text Text Text Text Text Text Text Text Text </mat-card-content>
       </mat-card>
-      
     </div>
     <div class="col-sm">
-      One of three columns
+
     </div>
     <div class="col-sm">
-      One of three columns
-    </div>
-    <div class="col-sm">
-      One of three columns
+
     </div>
   </div>
 </div>
