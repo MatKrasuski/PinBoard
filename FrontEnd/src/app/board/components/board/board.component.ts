@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IStory } from './story';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { stripSummaryForJitFileSuffix } from '@angular/compiler/src/aot/util';
 
 @Component({
   selector: 'app-board',
@@ -9,14 +10,15 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 })
 export class BoardComponent implements OnInit {
 
-  st: string = 'to-do';
-
   stories: IStory[] = [
     {column: 'to-do', title: 'Some title One', subtitle: 'subtitle One', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi semper ex eu ultricies accumsan.' },
     {column: 'to-do', title: 'Some title Two', subtitle: 'subtitle Two', content: 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vestibulum sed mi velit.' },
     {column: 'to-do', title: 'Some title Three', subtitle: 'subtitle Three', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
     {column: 'in-progress', title: 'Some title Four', subtitle: 'subtitle Four', content: 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin eros dui, pretium at pharetra non, luctus vel erat.' }
   ]
+
+  toDo: IStory[] = this.stories.filter(story => {return story.column === 'to-do'})
+  inProgress: IStory[] = this.stories.filter(story => {return story.column === 'in-progress'})
 
   constructor() { }
 
